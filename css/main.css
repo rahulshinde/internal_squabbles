@@ -184,7 +184,8 @@ body:after{
 }
 
 .title{
-  /*color: #f00;*/
+  color: #f00;
+  font-size: 3rem;
 }
 
 #intro_link{
