@@ -1,22 +1,115 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Internal Squabbles</title>
+  <title>Internal Squabbles - Map</title>
   <link rel="stylesheet" type="text/css" href="css/main.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
   <a href="index.html" id="home_link">
-    <img src="img/house.svg">
+    <?xml version="1.0" encoding="utf-8"?>
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+       viewBox="0 0 264 242" style="enable-background:new 0 0 264 242;" xml:space="preserve">
+    <style type="text/css">
+      .st0{fill:#EED894;stroke:#000000;stroke-width:6;stroke-miterlimit:10;}
+    </style>
+    <g>
+      <rect x="32.4" y="56" class="st0" width="26.4" height="129.9"/>
+      <rect x="120.3" y="56" class="st0" width="26.4" height="129.9"/>
+      <rect x="22.1" y="29.7" class="st0" width="220.8" height="26.4"/>
+      <rect x="32.4" y="3.3" class="st0" width="201.2" height="26.4"/>
+      <rect x="3.5" y="212.3" class="st0" width="256.9" height="26.4"/>
+      <rect x="16.8" y="186" class="st0" width="234.2" height="26.4"/>
+      <rect x="208.2" y="56" class="st0" width="26.4" height="129.9"/>
+    </g>
+    </svg>
   </a>
   <section id="map_outer_wrapper">
     <div id="map_inner_wrapper">
-      <img src="img/map.jpg">
+      <img id="map_image" src="img/map.jpg">
       <a href="neighbor.html">
-        <button id="bailey" class="text_button"></button>
+        <button class="bailey text_button"></button>
+      </a>
+      <a href="letter.html">
+        <button class="kit text_button"></button>
+      </a>
+      <a href="the_stones.html">
+        <button class="ciara text_button"></button>
+      </a>
+
+      <a href="journal.html">
+        <button class="journal text_button"></button>
+      </a>
+
+      <a href="turgid_sprocket.html">
+        <button class="matt text_button"></button>
       </a>
     </div>
   </section>
+
+  <section id="mini_map_outer_wrapper">
+    <img id="mini_map_image" src="img/map.jpg">
+    <div id="mini_map_location"></div>
+    <div class="bailey text_button"></div>
+    <div class="kit text_button"></div>
+    <div class="ciara text_button"></div>
+    <div class="journal text_button"></div>
+    <div class="matt text_button"></div>
+  </section>
+
+  <section id="zoom_control_container">
+    <button class="zoom_button" id="zoom_in">
+      <?xml version="1.0" encoding="utf-8"?>
+      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         viewBox="0 0 292 272" style="enable-background:new 0 0 292 272;" xml:space="preserve">
+      <style type="text/css">
+        
+          .zoom0{fill:#EED894;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:12;}
+        .zoom1{fill:#EED894;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+      </style>
+      <g>
+        <rect x="4.2" y="4.2" class="zoom0" width="122" height="122"/>
+        <rect x="85.8" y="65.8" class="zoom1" width="202" height="202"/>
+        <line class="zoom1" x1="4.2" y1="126.2" x2="85.8" y2="267.8"/>
+        <line class="zoom1" x1="4.2" y1="4.2" x2="85.8" y2="65.8"/>
+        <line class="zoom1" x1="126.2" y1="4.2" x2="287.8" y2="65.8"/>
+        <g>
+          <line class="zoom1" x1="186.8" y1="126.2" x2="186.8" y2="206.8"/>
+          <line class="zoom1" x1="227" y1="166.5" x2="146.5" y2="166.5"/>
+        </g>
+      </g>
+      </svg>
+    </button>
+    <div id="zoom_indicators">
+      <img id="zoom3" src="img/zoom3.svg">
+      <img id="zoom2" src="img/zoom2.svg">
+      <img id="zoom1" src="img/zoom1.svg">
+    </div>
+    <button class="zoom_button" id="zoom_out">
+      <?xml version="1.0" encoding="utf-8"?>
+      <!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         viewBox="0 0 292 272" style="enable-background:new 0 0 292 272;" xml:space="preserve">
+      <style type="text/css">
+        
+          .zoom0{fill:#EED894;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:12;}
+        .zoom1{fill:#EED894;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+      </style>
+      <g>
+        <rect x="4" y="4" class="zoom0" width="202" height="202"/>
+        <rect x="166" y="146" class="zoom1" width="122" height="122"/>
+        <line class="zoom1" x1="4" y1="4" x2="166" y2="146"/>
+        <line class="zoom1" x1="206" y1="4" x2="288" y2="146"/>
+        <line class="zoom1" x1="4" y1="206" x2="166" y2="268"/>
+        <g>
+          <line class="zoom1" x1="258" y1="206.3" x2="197" y2="206.3"/>
+        </g>
+      </g>
+      </svg>
+    </button>
+  </section>
+
+  <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

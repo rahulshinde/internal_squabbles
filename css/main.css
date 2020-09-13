@@ -47,12 +47,51 @@ table {
   border-spacing: 0;
 }
 
+@font-face{
+  font-family: 'Palatino Large Serifs';
+  font-weight: 800;
+  font-style: normal;
+  src: url(../fonts/PalatinoLargeSerif-Bold.woff),
+       url(../fonts/PalatinoLargeSerif-Bold.woff2);  
+}
+
+@keyframes blink{
+  0%   { opacity: 0.5; };
+  50%  { opacity: 1; };
+  100% { opacity: 0.5; };
+}
+
+@media (hover: hover){
+  #intro_link:hover{
+    background-color: #f00;
+    border-color: #f00;
+  }
+
+  #intro_link:hover + #internal_squabbles_text .st0,
+  #intro_link:hover + #internal_squabbles_text .st1{
+    fill: #f00;
+  }
+
+  #home_link svg:hover .st0{
+    fill: #f00;
+    stroke: #f00;
+  }
+
+  #back_link svg:hover .st0,
+  #back_link svg:hover .st1,
+  .zoom_button svg:hover .zoom0,
+  .zoom_button svg:hover .zoom1{
+    fill: #f00;
+    stroke: #f00;
+  }
+}
+
 
 html,
 body{
-  font-family: 'Palatino', sans-serif;
+  font-family: 'Palatino Large Serifs', serif;
   font-size: 30px;
-  font-weight: bold; 
+  font-weight: 800; 
   color: #000;
   line-height: 1.2;
 }
@@ -97,13 +136,13 @@ body:after{
   z-index: 10;
 }
 
-#home_link img{
+#home_link svg{
   display: block;
   height: 3rem;
   width: auto;
 }
 
-#back_link img{
+#back_link svg{
   display: block;
   height: 2rem;
   width: auto;
@@ -116,7 +155,7 @@ body:after{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 #internal_squabbles_text{
@@ -134,9 +173,25 @@ body:after{
   padding: 0.5rem;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
+  position: relative;
 }
 
-.intro_text a{
+.credits{
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.6em;
+}
+
+.title{
+  /*color: #f00;*/
+}
+
+#intro_link{
+  position: fixed;
+  bottom: 2rem;
+  left: calc(50% + 0.5rem);
+  z-index: 10;
   color: #000;
   background-color: #eed894;
   display: inline-block;
@@ -152,9 +207,9 @@ body:after{
 #map_outer_wrapper{
   position: fixed;
   top: 10vh;
-  right: 20%;
+  right: 8%;
   bottom: 10vh;
-  left: 20%;
+  left: 30%;
   overflow: hidden;
   border: 1.5rem solid #fff;
   border-image: url(../img/border.svg);
@@ -171,24 +226,45 @@ body:after{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 300%;
+  width: 175%;
+  cursor: grab;
+  transition: width ease 0.5s;
+}
+
+#map_inner_wrapper a:link{
+  animation: blink 1s linear infinite alternate;
+}
+
+#map_inner_wrapper a:visited{
+  animation: none;
+  opacity: 1;
+}
+
+#map_inner_wrapper:active{
+  cursor: grabbing;
 }
 
 #map_outer_wrapper:after{
   content: '';
   position: fixed;
   top: calc(10vh + 1.5rem);
-  right: calc(20% + 1.5rem);
+  right: calc(8% + 1.5rem);
   bottom: calc(10vh + 1.5rem);
-  left: calc(20% + 1.5rem);
+  left: calc(30% + 1.5rem);
   box-shadow: inset 0px 5px 5px rgba(0,0,0,0.6);
   border: 3px solid;
   z-index: 10;
   pointer-events: none;
 }
 
-img{
+#map_inner_wrapper img{
   width: 100%;
+  -webkit-user-select:none;
+ -khtml-user-select:none;
+ -moz-user-select:none;
+ -o-user-select:none;
+  user-select:none;
+  pointer-events:none;
 }
 
 .text_button{
@@ -199,23 +275,158 @@ img{
   border-radius: 50%;
   z-index: 10;
   cursor: pointer;
+  transform: scale(1);
+  transition: transform ease 0.5s; 
 }
 
-#bailey{
+#zoom_control_container{
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  z-index: 100;
+  width: 2.5rem;
+  height: 5rem;
+}
+
+.zoom_button{
+  position: absolute;
+  width: auto;
+  background: transparent;
+  border: none; 
+  cursor: pointer;
+}
+
+#zoom_indicators{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: -3rem;
+  top: 50%;
+  transform: translate(0%, -50%);
+  pointer-events: none;
+}
+
+#zoom_indicators img{
+  width: 2.5rem;
+  margin: 0.25rem 0;
+  transform: scale(0.9);
+  opacity: 0.4;
+  transform-origin: center left;
+  transition: transform ease 0.4s, opacity ease 0.4s;
+}
+
+#zoom_indicators #zoom2{
+  opacity: 1;
+  transform: scale(1);
+}
+
+body.zoom_in #map_inner_wrapper{
+  width: 275%;
+}
+
+body.zoom_in #zoom_indicators #zoom2{
+  transform: scale(0.9);
+  opacity: 0.4;
+}
+
+body.zoom_in .text_button{
+  transform: scale(1.75);
+}
+
+body.zoom_in #zoom_indicators #zoom3{
+  opacity: 1;
+  transform: scale(1);
+}
+
+body.zoom_out #map_inner_wrapper{
+  width: 125%;
+}
+
+body.zoom_out #zoom_indicators #zoom2{
+  transform: scale(0.9);
+  opacity: 0.4;
+}
+
+body.zoom_out #zoom_indicators #zoom1{
+  opacity: 1;
+  transform: scale(1);
+}
+
+body.zoom_out .text_button{
+  transform: scale(0.75);
+}
+
+#zoom_out{
+  bottom: 0;
+}
+
+.zoom_button svg{
+  width: 100%;
+}
+
+.bailey{
   top: 50%;
   left: 50%;
 }
 
+.kit{
+  bottom: 10%;
+  right: 10%;
+}
+
+.ciara{
+  top: 35%;
+  left: 25%;
+}
+
+.matt{
+  top: 17%;
+  left: 18%;
+}
+
+.journal{
+  top: 24%;
+  right: 32%;
+}
+
+#mini_map_outer_wrapper{
+  position: fixed;
+  top: 45%;  
+  left: 1.5rem;
+  transform: translate(0%, -50%);
+  width: calc(25% - 3rem);
+}
+
+#mini_map_location{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 2px solid #f00;
+  transform: translate(-50%, -50%);
+  width: 11vw;
+  height: 13.8vh;
+  box-sizing: border-box;
+}
+
+#mini_map_outer_wrapper .text_button{
+  width: 0.2rem;
+  height: 0.2rem;
+}
+
+#mini_map_image{
+  display: block;
+  box-shadow: 0px 5px 5px rgba(0,0,0,0.6);
+  width: 100%;
+
+}
+
 #text_map_container{
   position: fixed;
-  bottom: 2rem;
-  left: 3rem;
+  bottom: 1.5rem;
+  left: 1.5rem;
 }
 
 #text_map_inner_container{
-  position: absolute;
-  bottom: 0rem;
-  left: 0rem;
   display: inline-block;
 }
 
@@ -227,7 +438,7 @@ img{
   box-shadow: 0px 5px 5px rgba(0,0,0,0.6);
 }
 
-#text_map_inner_container button{
+#text_map_inner_container .text_button{
   width: 0.5rem;
   height: 0.5rem;
 }
@@ -236,23 +447,11 @@ img{
   position: relative;
   background-color: #eed894;
   color: #000;
-  width: calc(50% - 1rem);
+  width: calc(50% - 1.5rem);
   margin-left: 50%;
   padding: 1rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   border: 3px solid;
   box-sizing: border-box;
-}
-
-#text_section:before{
-  top: 0;
-  left: 50%;
-  border-bottom: 2px solid;
-}
-
-#text_section:after{
-  bottom: 0;
-  left: 50%;
-  border-top: 2px solid;
 }
