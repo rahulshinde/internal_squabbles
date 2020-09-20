@@ -56,15 +56,25 @@ table {
 }
 
 @keyframes blink{
-  0%   { opacity: 0.5; };
-  50%  { opacity: 1; };
-  100% { opacity: 0.5; };
+  0%   { background-color: rgba(255, 0, 0, 1); };
+  50%  { background-color: rgba(255, 0, 0, 0.5); };
+  100% { background-color: rgba(255, 0, 0, 1); };
 }
 
 @media (hover: hover){
   #intro_link:hover{
     background-color: #f00;
-    border-color: #f00;
+    color: #f00;
+    text-shadow: 0px 1px 5px rgba(0,0,0,0.5);
+  }
+
+  .text_button:hover span{
+    display: block;
+  }
+
+  .intro_text a:hover{
+    color: #f00;
+    text-decoration: none;
   }
 
   #intro_link:hover + #internal_squabbles_text .st0,
@@ -83,6 +93,12 @@ table {
   .zoom_button svg:hover .zoom1{
     fill: #f00;
     stroke: #f00;
+  }
+  #mc-embedded-subscribe:hover{
+    background-color: #f00;
+    color: #f00;
+    text-shadow: 0px 1px 5px rgba(0,0,0,0.5);
+    cursor: pointer;
   }
 }
 
@@ -148,6 +164,49 @@ body:after{
   width: auto;
 }
 
+#mc-embedded-subscribe-form{
+  margin-top: 1rem;
+}
+
+.mc-field-group{
+  width: auto;
+  display: inline-block;
+}
+
+.mc-field-group .clear{
+  display: inline-block;
+}
+
+#mce-EMAIL{
+  font-family: 'Palatino Large Serifs', serif;
+  font-weight: 800; 
+  color: #000;
+  outline: none;
+  border: none;
+  border-bottom: 3px solid;
+  padding: 0.2rem;
+  background-color: transparent;
+}
+
+#mc-embedded-subscribe{
+  font-family: 'Palatino Large Serifs', serif;  
+  font-weight: 800; 
+  color: #000;
+  background-color: #eed894;
+  display: inline-block;
+  text-decoration: none;
+  border: 3px solid;
+  padding: 0.2rem;
+  border-radius: 0.2rem;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  text-transform: uppercase;
+}
+
+.small_type{
+  font-size: 0.8em;
+}
+
 #intro{
   width: 100%;
   height: 100vh;
@@ -159,7 +218,7 @@ body:after{
 }
 
 #internal_squabbles_text{
-  max-height: calc(100% - 12rem);
+  max-height: 50%;
   padding: 0.5rem;
   width: 100%;
   max-width: 100%;
@@ -176,33 +235,33 @@ body:after{
   position: relative;
 }
 
-.credits{
-  position: absolute;
-  bottom: 0.5rem;
-  right: 0.5rem;
-  font-size: 0.6em;
+.intro_text a{
+  color: #000;
 }
 
 .title{
   color: #f00;
   font-size: 3rem;
+  line-height: 1;
 }
 
 #intro_link{
   position: fixed;
-  bottom: 2rem;
+  bottom: 0.5rem;
   left: calc(50% + 0.5rem);
+  width: calc(50% - 1rem);
+  text-align: center;
   z-index: 10;
   color: #000;
   background-color: #eed894;
   display: inline-block;
-  margin-top: 1rem;
   text-decoration: none;
   border: 3px solid;
   padding: 0.5rem;
   border-radius: 0.5rem;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
+  text-transform: uppercase;
 }
 
 #map_outer_wrapper{
@@ -232,13 +291,19 @@ body:after{
   transition: width ease 0.5s;
 }
 
-#map_inner_wrapper a:link{
+#map_inner_wrapper a:link .text_button{
+  background-color: rgba(255,0,0,0.4);
   animation: blink 1s linear infinite alternate;
 }
 
-#map_inner_wrapper a:visited{
+#map_inner_wrapper a:hover .text_button{
+  background-color: #f00;
   animation: none;
-  opacity: 1;
+}
+
+#map_inner_wrapper a:visited .text_button{
+  background-color: inherit;
+  animation: none;
 }
 
 #map_inner_wrapper:active{
@@ -277,7 +342,23 @@ body:after{
   z-index: 10;
   cursor: pointer;
   transform: scale(1);
+  transform-origin: left;
   transition: transform ease 0.5s; 
+}
+
+.text_button span{
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+  font-family: 'Palatino Large Serifs', serif;
+  font-size: 0.8rem;
+  font-weight: 800; 
+  color: #f00;
+  line-height: 1.2;
+  width: 5rem;
+  display: none;
 }
 
 #zoom_control_container{
@@ -325,6 +406,15 @@ body.zoom_in #map_inner_wrapper{
   width: 275%;
 }
 
+body.zoom_in #map_inner_wrapper{
+  width: 275%;
+}
+
+body.zoom_in #mini_map_location{
+  width: 7vw;
+  height: 8.75vh;
+}
+
 body.zoom_in #zoom_indicators #zoom2{
   transform: scale(0.9);
   opacity: 0.4;
@@ -340,7 +430,12 @@ body.zoom_in #zoom_indicators #zoom3{
 }
 
 body.zoom_out #map_inner_wrapper{
-  width: 125%;
+  width: 100%;
+}
+
+body.zoom_out #mini_map_location{
+  width: 19.2vw;
+  height: 24vh;
 }
 
 body.zoom_out #zoom_indicators #zoom2{
@@ -406,7 +501,10 @@ body.zoom_out .text_button{
   transform: translate(-50%, -50%);
   width: 11vw;
   height: 13.8vh;
+
+  transition: width ease 0.5s, height ease 0.5s;
   box-sizing: border-box;
+  pointer-events: none;
 }
 
 #mini_map_outer_wrapper .text_button{
@@ -416,6 +514,7 @@ body.zoom_out .text_button{
 
 #mini_map_image{
   display: block;
+  pointer-events: none;
   box-shadow: 0px 5px 5px rgba(0,0,0,0.6);
   width: 100%;
 
