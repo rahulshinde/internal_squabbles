@@ -70,6 +70,10 @@ function init(){
   body.addEventListener('mousemove', dragging);
   body.addEventListener('mouseup', endDrag);
 
+  body.addEventListener("touchstart", startDrag, false);
+  body.addEventListener("touchmove", dragging, false);
+  body.addEventListener("touchend", endDrag, false);
+
   window.addEventListener('resize', resizeHandler);
 
   document.getElementById('zoom_in').addEventListener('click', zoomIn);
