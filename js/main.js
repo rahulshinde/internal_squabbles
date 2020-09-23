@@ -30,7 +30,9 @@ var mini_map_difference_x,
     mini_map_img_height_boundry;
 
 document.addEventListener("DOMContentLoaded", function(){
-  init();
+  imagesLoaded( document.body, function() {
+    init();
+  });
 });
 
 function init(){
