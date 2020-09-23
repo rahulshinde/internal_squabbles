@@ -31,7 +31,10 @@ var mini_map_difference_x,
 
 document.addEventListener("DOMContentLoaded", function(){
   imagesLoaded( document.body, function() {
-    init();
+    document.body.classList.add('loaded');
+    if (document.body.classList.contains('map')){
+      init();
+    }
   });
 });
 
