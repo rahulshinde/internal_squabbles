@@ -70,9 +70,9 @@ function init(){
   body.addEventListener('mousemove', dragging);
   body.addEventListener('mouseup', endDrag);
 
-  body.addEventListener("touchstart", startDrag, false);
-  body.addEventListener("touchmove", dragging, false);
-  body.addEventListener("touchend", endDrag, false);
+  body.addEventListener("touchstart", startDrag, true);
+  body.addEventListener("touchmove", dragging, true);
+  body.addEventListener("touchend", endDrag, true);
 
   window.addEventListener('resize', resizeHandler);
 
@@ -82,6 +82,7 @@ function init(){
 
 function resizeHandler(){
   setImageBoundaries();
+  checkExtremes();
 }
 
 function setImageBoundaries(){
@@ -99,6 +100,7 @@ function setImageBoundaries(){
 }
 
 function startDrag(e){
+  console.log(e.touches[0].clientX);
   if (e.target.id == 'map_inner_wrapper' || e.target.id == 'mini_map_outer_wrapper'){
     if (e.target.id == 'mini_map_outer_wrapper'){
       prefix = 'mini_map_';
@@ -106,17 +108,31 @@ function startDrag(e){
       prefix = '';
     }
     clicked = true;
-    starting_x = e.clientX;
-    starting_y = e.clientY;
-    e.preventDefault();
-    e.stopPropagation();
+    if (e.type == 'touchstart'){
+      starting_x = e.touches[0].clientX;
+      starting_y = e.touches[0].clientY;
+    } else{
+      starting_x = e.clientX;
+      starting_y = e.clientY;
+      e.preventDefault();
+      e.stopPropagation();
+    }
   }
 }
 
 function dragging(e){
   if (clicked){
-    window[(prefix + 'difference_x')] = window[(prefix + 'cached_difference_x')] + e.clientX - starting_x;
-    window[(prefix + 'difference_y')] = window[(prefix + 'cached_difference_y')] + e.clientY - starting_y;
+    console.log(e.type);
+    if (e.type == 'touchmove'){
+      var x = e.touches[0].clientX;
+      var y = e.touches[0].clientY;
+      console.log(x);
+    } else{
+      var x = e.clientX;
+      var y = e.clientY;;
+    }
+    window[(prefix + 'difference_x')] = window[(prefix + 'cached_difference_x')] + x - starting_x;
+    window[(prefix + 'difference_y')] = window[(prefix + 'cached_difference_y')] + y - starting_y;
 
     checkExtremes();
   }
