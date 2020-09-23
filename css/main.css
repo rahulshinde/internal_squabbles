@@ -181,6 +181,8 @@ body:after{
   font-family: 'Palatino Large Serifs', serif;
   font-weight: 800; 
   color: #000;
+  appearance: none;
+  -webkit-appearance: none;
   outline: none;
   border: none;
   border-bottom: 3px solid;
@@ -199,6 +201,8 @@ body:after{
   border: 3px solid;
   padding: 0.2rem;
   border-radius: 0.2rem;
+  appearance: none;
+  -webkit-appearance: none;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   text-transform: uppercase;
