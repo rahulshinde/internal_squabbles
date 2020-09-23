@@ -100,7 +100,6 @@ function setImageBoundaries(){
 }
 
 function startDrag(e){
-  console.log(e.touches[0].clientX);
   if (e.target.id == 'map_inner_wrapper' || e.target.id == 'mini_map_outer_wrapper'){
     if (e.target.id == 'mini_map_outer_wrapper'){
       prefix = 'mini_map_';
