@@ -106,7 +106,6 @@ function startDrag(e){
     starting_y = e.clientY;
     e.preventDefault();
     e.stopPropagation();
-    console.log(cached_difference_x);
   }
 }
 
