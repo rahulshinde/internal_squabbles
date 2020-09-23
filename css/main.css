@@ -120,6 +120,7 @@ header,
 main{
   opacity: 0;
   transition: opacity ease 0.8s;
+  -webkit-transition: opacity ease 0.8s;
 }
 
 body.loaded header,
@@ -303,7 +304,6 @@ body:after{
   transform: translate(-50%, -50%);
   width: 175%;
   cursor: grab;
-  transition: width ease 0.5s;
 }
 
 #map_inner_wrapper a:link .text_button{
@@ -358,7 +358,6 @@ body:after{
   cursor: pointer;
   transform: scale(1);
   transform-origin: left;
-  transition: transform ease 0.5s; 
 }
 
 .text_button span{
@@ -409,7 +408,6 @@ body:after{
   transform: scale(0.9);
   opacity: 0.4;
   transform-origin: center left;
-  transition: transform ease 0.4s, opacity ease 0.4s;
 }
 
 #zoom_indicators #zoom2{
@@ -517,7 +515,6 @@ body.zoom_out .text_button{
   width: 11vw;
   height: 13.8vh;
 
-  transition: width ease 0.5s, height ease 0.5s;
   box-sizing: border-box;
   pointer-events: none;
 }
