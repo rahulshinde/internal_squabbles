@@ -102,6 +102,63 @@ table {
   }
 }
 
+.intro_text a:focus{
+  outline: 3px solid #f00;
+  outline-offset: 0.05rem;
+  text-decoration: none;
+  color: #f00;
+}
+
+a:focus{
+  outline: 3px solid #f00;
+  outline-offset: 0.05rem;
+  text-decoration: none;
+  color: #f00;
+}
+
+#intro_link:focus{
+  background-color: #f00;
+  color: #f00;
+  text-shadow: 0px 1px 5px rgba(0,0,0,0.5);
+  outline
+}
+
+#mc-embedded-subscribe:focus{
+  background-color: #f00;
+  color: #f00;
+  text-shadow: 0px 1px 5px rgba(0,0,0,0.5);
+  outline: 3px solid #f00;
+  outline-offset: 0.05rem;
+}
+
+.text_button:focus span{
+  display: block;
+}
+
+#intro_link:focus + #internal_squabbles_text .st0,
+#intro_link:focus + #internal_squabbles_text .st1{
+  fill: #f00;
+}
+
+#home_link:focus svg .st0{
+  fill: #f00;
+  stroke: #f00;
+}
+
+#back_link:focus svg .st0,
+#back_link:focus svg .st1,
+.zoom_button:focus svg .zoom0,
+.zoom_button:focus svg .zoom1{
+  fill: #f00;
+  stroke: #f00;
+}
+
+#mce-EMAIL:focus{
+  outline: 3px solid #f00;
+  outline-offset: 0.05rem;
+  color: #f00;
+}
+
 
 html,
 body{
@@ -348,12 +405,22 @@ body:after{
   pointer-events:none;
 }
 
+.text_button:focus{
+  outline: 3px solid #f00;
+  outline-offset: 0.05rem;
+}
+
 .text_button{
   position: absolute;
   width: 1rem;
   height: 1rem;
   background-color: #f00;
   border-radius: 50%;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  appearance: none;
+  -webkit-appearance: none;
   z-index: 10;
   cursor: pointer;
   transform: scale(1);
@@ -382,6 +449,11 @@ body:after{
   z-index: 100;
   width: 2.5rem;
   height: 5rem;
+}
+
+.zoom_button:focus{
+  outline: 3px solid #f00;
+  outline-offset: 0.05rem;
 }
 
 .zoom_button{
