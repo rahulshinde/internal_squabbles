@@ -641,6 +641,15 @@ body.zoom_out .text_button{
 }
 
 @media (max-width: 1100px){
+  body.map{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+  }
+
   #home_link, #back_link{
     top: 5vh;
     left: 5vw;
@@ -685,8 +694,8 @@ body.zoom_out .text_button{
   }
 
   #mini_map_location{
-    width: 13vw;
-    height: 7vh;
+    width: 19vw;
+    height: 12vh;
   }
 
 
@@ -711,6 +720,9 @@ body.zoom_out .text_button{
   html,
   body{
     font-size: 20px;
+  }
+  body.map{
+    position: static;
   }
   #intro{
     height: auto;

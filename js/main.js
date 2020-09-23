@@ -122,7 +122,6 @@ function startDrag(e){
 
 function dragging(e){
   if (clicked){
-    console.log(e.type);
     if (e.type == 'touchmove'){
       var x = e.touches[0].clientX;
       var y = e.touches[0].clientY;
