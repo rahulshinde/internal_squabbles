@@ -115,39 +115,44 @@ function dragging(e){
     window[(prefix + 'difference_x')] = window[(prefix + 'cached_difference_x')] + e.clientX - starting_x;
     window[(prefix + 'difference_y')] = window[(prefix + 'cached_difference_y')] + e.clientY - starting_y;
 
-    if (window[(prefix + 'difference_x')] > window[(prefix + 'img_width_boundry')]){
-      window[(prefix + 'difference_x')] = window[(prefix + 'img_width_boundry')];
-    }
+    checkExtremes();
+  }
+}
 
-    if (window[(prefix + 'difference_x')] < -window[(prefix + 'img_width_boundry')]){
-      window[(prefix + 'difference_x')] = -window[(prefix + 'img_width_boundry')];
-    }
+function checkExtremes(){
+  if (window[(prefix + 'difference_x')] > window[(prefix + 'img_width_boundry')]){
+    window[(prefix + 'difference_x')] = window[(prefix + 'img_width_boundry')];
+  }
 
-    if (window[(prefix + 'difference_y')] > window[(prefix + 'img_height_boundry')]){
-      window[(prefix + 'difference_y')] = window[(prefix + 'img_height_boundry')];
-    }
+  if (window[(prefix + 'difference_x')] < -window[(prefix + 'img_width_boundry')]){
+    window[(prefix + 'difference_x')] = -window[(prefix + 'img_width_boundry')];
+  }
 
-    if (window[(prefix + 'difference_y')] < -window[(prefix + 'img_height_boundry')]){
-      window[(prefix + 'difference_y')] = -window[(prefix + 'img_height_boundry')];
-    }
+  if (window[(prefix + 'difference_y')] > window[(prefix + 'img_height_boundry')]){
+    window[(prefix + 'difference_y')] = window[(prefix + 'img_height_boundry')];
+  }
 
-    console.log(difference_x);
+  if (window[(prefix + 'difference_y')] < -window[(prefix + 'img_height_boundry')]){
+    window[(prefix + 'difference_y')] = -window[(prefix + 'img_height_boundry')];
+  }
+  positionMap();
+}
 
-    if (prefix == ''){
-      scaled_difference_x = window[(prefix + 'difference_x')] * scale_factor;
-      scaled_difference_y = window[(prefix + 'difference_y')] * scale_factor;
-      map_inner_wrapper.style.top = 'calc(50% + ' + window[(prefix + 'difference_y')] + 'px)';
-      map_inner_wrapper.style.left = 'calc(50% + ' + window[(prefix + 'difference_x')] + 'px)';
-      mini_map_location.style.top = 'calc(50% - ' + scaled_difference_y + 'px)';
-      mini_map_location.style.left = 'calc(50% - ' + scaled_difference_x + 'px)';
-    } else{
-      scaled_difference_x = window[(prefix + 'difference_x')] / scale_factor;
-      scaled_difference_y = window[(prefix + 'difference_y')] / scale_factor;
-      map_inner_wrapper.style.top = 'calc(50% - ' + scaled_difference_y + 'px)';
-      map_inner_wrapper.style.left = 'calc(50% - ' + scaled_difference_x + 'px)';
-      mini_map_location.style.top = 'calc(50% + ' + window[(prefix + 'difference_y')] + 'px)';
-      mini_map_location.style.left = 'calc(50% + ' + window[(prefix + 'difference_x')] + 'px)';
-    }
+function positionMap(){
+  if (prefix == ''){
+    scaled_difference_x = window[(prefix + 'difference_x')] * scale_factor;
+    scaled_difference_y = window[(prefix + 'difference_y')] * scale_factor;
+    map_inner_wrapper.style.top = 'calc(50% + ' + window[(prefix + 'difference_y')] + 'px)';
+    map_inner_wrapper.style.left = 'calc(50% + ' + window[(prefix + 'difference_x')] + 'px)';
+    mini_map_location.style.top = 'calc(50% - ' + scaled_difference_y + 'px)';
+    mini_map_location.style.left = 'calc(50% - ' + scaled_difference_x + 'px)';
+  } else{
+    scaled_difference_x = window[(prefix + 'difference_x')] / scale_factor;
+    scaled_difference_y = window[(prefix + 'difference_y')] / scale_factor;
+    map_inner_wrapper.style.top = 'calc(50% - ' + scaled_difference_y + 'px)';
+    map_inner_wrapper.style.left = 'calc(50% - ' + scaled_difference_x + 'px)';
+    mini_map_location.style.top = 'calc(50% + ' + window[(prefix + 'difference_y')] + 'px)';
+    mini_map_location.style.left = 'calc(50% + ' + window[(prefix + 'difference_x')] + 'px)';
   }
 }
 
@@ -168,8 +173,6 @@ function calcCachedValues(){
     mini_map_cached_difference_x = mini_map_difference_x;
     mini_map_cached_difference_y = mini_map_difference_y;
   }
-
-  console.log(cached_difference_x);
 }
 
 function zoomIn(){
@@ -178,10 +181,9 @@ function zoomIn(){
   } else if (!document.body.classList.contains('zoom_in')){
     document.body.classList.add('zoom_in');
   }
-
-  setTimeout(function(){
-    setImageBoundaries();  
-  }, 600);
+  
+  setImageBoundaries(); 
+  checkExtremes();
 }
 
 function zoomOut(){
@@ -190,7 +192,6 @@ function zoomOut(){
   } else if (!document.body.classList.contains('zoom_out')){
     document.body.classList.add('zoom_out');
   }
-  setTimeout(function(){
-    setImageBoundaries();  
-  }, 600);
+  setImageBoundaries(); 
+  checkExtremes(); 
 }
