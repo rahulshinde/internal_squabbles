@@ -178,6 +178,11 @@ header{
   z-index: 10;
 }
 
+main{
+  position: relative;
+  z-index: 1f;
+}
+
 header,
 main{
   opacity: 0;
@@ -656,6 +661,10 @@ body.zoom_out .text_button{
     overflow: hidden;
   }
 
+  #internal_squabbles_text{
+    height: auto;
+  }
+
   #home_link, #back_link{
     top: 5vh;
     left: 5vw;
@@ -723,12 +732,87 @@ body.zoom_out .text_button{
 }
 
 @media (max-width: 767px){
+
+  #internal_squabbles_text path{
+    fill: #f00;
+  }
   html,
   body{
     font-size: 20px;
   }
   body.map{
     position: static;
+    overflow: auto;
+  }
+
+  #home_link,
+  #back_link{
+    top: 0.5rem;
+    left: 0.5rem;
+  }
+  #map_outer_wrapper:after{
+    display: none;
+  }
+  #map_outer_wrapper{
+    border: none;
+    margin-top: 0.5rem;
+    background-color: transparent;
+  }
+  #map_inner_wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100% - 1rem);
+    margin: 0 0.5rem;
+  }
+  #map_inner_wrapper a{
+    display: flex;
+    color: #f00;
+    margin-bottom: 2rem;
+    /*text-decoration: none;*/
+  }
+  #map_inner_wrapper a:link .text_button{
+    animation: none;
+    -webkit-animation: none;
+    background-color: transparent;
+  }
+  #map_outer_wrapper,
+  #map_outer_wrapper .text_button,
+  #map_inner_wrapper{
+    position: static;
+    transform: none;
+  }
+  .text_button{
+    width: auto;
+    height: auto;
+  }
+  .text_button span{
+    display: inline;
+    line-height: 1;
+    position: static;
+    transform: none;
+    font-size: 2.5rem;
+    hyphens: auto;
+    word-break: break-all;
+    padding-left: 8rem;
+    width: auto;
+  }
+  #mini_map_location,
+  #map_image{
+    display: none;
+  }
+  #mini_map_outer_wrapper{
+    top: 0rem;
+    right: 0rem;
+    left: 0;
+    right: 0;
+    height: 100%;
+    transform: none;
+  }
+  #mini_map_outer_wrapper img{
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
   }
   #intro{
     height: auto;
@@ -747,6 +831,9 @@ body.zoom_out .text_button{
   }
   #zoom_control_container{
     display: none;
+  }
+  #text_section{
+    padding-top: 0.5rem;
   }
   .title{
     hyphens: auto;
