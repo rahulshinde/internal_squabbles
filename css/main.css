@@ -741,17 +741,14 @@ body.zoom_out .text_button{
     font-size: 20px;
   }
   body.map{
-    position: static;
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   #home_link,
   #back_link{
     top: 0.5rem;
     left: 1rem;
-  }
-  #home_link svg{
-    height: 2rem;
   }
   #map_outer_wrapper:after{
     display: none;
@@ -801,6 +798,7 @@ body.zoom_out .text_button{
     width: auto;
   }
   #mini_map_location,
+  #mini_map_outer_wrapper .text_button,
   #map_image{
     display: none;
   }
