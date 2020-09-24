@@ -180,7 +180,7 @@ header{
 
 main{
   position: relative;
-  z-index: 1f;
+  z-index: 1;
 }
 
 header,
@@ -730,7 +730,7 @@ body.zoom_out .text_button{
     display: none;
   }
 }
-
+  
 @media (max-width: 767px){
 
   #internal_squabbles_text path{
@@ -748,7 +748,10 @@ body.zoom_out .text_button{
   #home_link,
   #back_link{
     top: 0.5rem;
-    left: 0.5rem;
+    left: 1rem;
+  }
+  #home_link svg{
+    height: 2rem;
   }
   #map_outer_wrapper:after{
     display: none;
@@ -762,8 +765,8 @@ body.zoom_out .text_button{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: calc(100% - 1rem);
-    margin: 0 0.5rem;
+    width: calc(100% - 2rem);
+    margin: 0 1rem;
   }
   #map_inner_wrapper a{
     display: flex;
@@ -820,8 +823,8 @@ body.zoom_out .text_button{
     margin-bottom: 4rem;
   }
   #intro_link{
-    width: calc(100% - 1rem);
-    left: 0.5rem;
+    width: calc(100% - 2rem);
+    left: 1rem;
   }
   #mce-EMAIL{
     width: calc(100% - 8.25rem);
