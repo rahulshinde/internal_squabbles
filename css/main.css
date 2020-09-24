@@ -741,8 +741,6 @@ body.zoom_out .text_button{
     font-size: 20px;
   }
   body.map{
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
   }
 
   #home_link,
@@ -760,10 +758,19 @@ body.zoom_out .text_button{
   }
   #map_inner_wrapper{
     display: flex;
+    position: fixed;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
     flex-direction: column;
     align-items: center;
     width: calc(100% - 2rem);
     margin: 0 1rem;
+    transform: none !important;
+    -webkit-transform: none !important;
+    z-index: 1;
   }
   #map_inner_wrapper a{
     display: flex;
@@ -777,8 +784,7 @@ body.zoom_out .text_button{
     background-color: transparent;
   }
   #map_outer_wrapper,
-  #map_outer_wrapper .text_button,
-  #map_inner_wrapper{
+  #map_outer_wrapper .text_button{
     position: static;
     transform: none;
   }
