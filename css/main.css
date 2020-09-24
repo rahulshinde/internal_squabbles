@@ -759,6 +759,8 @@ body.zoom_out .text_button{
     left: 0 !important;
     bottom: 0 !important;
     z-index: 1;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
     background-color: transparent;
   }
   #map_inner_wrapper{
