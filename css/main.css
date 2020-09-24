@@ -754,14 +754,15 @@ body.zoom_out .text_button{
   #map_outer_wrapper{
     border: none;
     margin-top: 0.5rem;
-    background-color: transparent;
-  }
-  #map_inner_wrapper{
-    display: flex;
     position: fixed;
     top: 0 !important;
     left: 0 !important;
     bottom: 0 !important;
+    background-color: transparent;
+  }
+  #map_inner_wrapper{
+    display: flex;
+    position: static;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     flex-direction: column;
@@ -775,7 +776,7 @@ body.zoom_out .text_button{
   #map_inner_wrapper a{
     display: flex;
     color: #f00;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     /*text-decoration: none;*/
   }
   #map_inner_wrapper a:link .text_button{
