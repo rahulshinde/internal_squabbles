@@ -651,6 +651,10 @@ body.zoom_out .text_button{
   z-index: 1;
 }
 
+#mobile_explanation{
+  display: none;
+}
+
 @media (max-width: 1100px){
   body.map{
     position: fixed;
@@ -732,6 +736,13 @@ body.zoom_out .text_button{
 }
   
 @media (max-width: 767px){
+
+  #mobile_explanation{
+    display: block;
+    padding-left: 8rem;
+    margin-bottom: 2rem;
+    color: #f00;
+  }
 
   #internal_squabbles_text path{
     fill: #f00;
