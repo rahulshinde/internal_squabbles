@@ -61,6 +61,12 @@ table {
   100% { background-color: rgba(255, 0, 0, 1); };
 }
 
+@keyframes blinkbailey{
+  0%   { background-color: rgba(0, 0, 255, 1); };
+  50%  { background-color: rgba(0, 0, 255, 0.5); };
+  100% { background-color: rgba(0, 0, 255, 1); };
+}
+
 @media (hover: hover){
   #intro_link:hover{
     background-color: #f00;
@@ -322,6 +328,10 @@ body:after{
   color: #000;
 }
 
+.title.blue{
+  color: #00f;
+}
+
 .title{
   color: #f00;
   font-size: 3rem;
@@ -371,6 +381,11 @@ body:after{
   transform: translate(-50%, -50%);
   width: 175%;
   cursor: grab;
+}
+
+#map_inner_wrapper a:link .text_button.bailey_button{
+  background-color: rgba(0,0,255,0.4);
+  animation: blinkbailey 1s linear infinite alternate;
 }
 
 #map_inner_wrapper a:link .text_button{
@@ -606,6 +621,11 @@ body.zoom_out .text_button{
   height: 0.2rem;
 }
 
+#mini_map_outer_wrapper .text_button.bailey,
+#mini_map_outer_wrapper .text_button.journal{
+  background-color: rgb(0,0,255);
+}
+
 #mini_map_image{
   display: block;
   pointer-events: none;
@@ -635,6 +655,11 @@ body.zoom_out .text_button{
 #text_map_inner_container .text_button{
   width: 0.5rem;
   height: 0.5rem;
+}
+
+#text_map_inner_container .text_button.bailey,
+#text_map_inner_container .text_button.journal{
+  background-color: rgb(0,0,255);
 }
 
 #text_section{
